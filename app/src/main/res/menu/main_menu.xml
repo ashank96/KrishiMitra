@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="KANNADA"
+          android:id="@+id/kannada"
+        > </item>
+    <item android:title="ENGLISH"
+        android:id="@+id/english"
+        > </item>
+
+
+
+
+
+</menu>
