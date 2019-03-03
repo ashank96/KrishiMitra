@@ -29,6 +29,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.10.0'
+    implementation group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: '3.9.0'
+
     implementation 'com.bluelinelabs:conductor:3.0.0-rc1'
     implementation 'com.hannesdorfmann.mosby3:mvp-conductor:3.1.0'
 

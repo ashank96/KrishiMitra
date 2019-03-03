@@ -1,7 +1,14 @@
 package com.aloofwillow96.languageapp.activities;
 
+import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.aloofwillow96.languageapp.R;
@@ -14,13 +21,14 @@ import com.bluelinelabs.conductor.RouterTransaction;
 public class LandingActivity extends BaseActivity {
 	ActivityLandingBinding activityLandingBinding;
 	Router router;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		activityLandingBinding = DataBindingUtil.setContentView(this, R.layout.activity_landing);
 		initToolbar();
-		router = Conductor.attachRouter(this,activityLandingBinding.conductor,savedInstanceState);
-		if(!router.hasRootController()){
+		router = Conductor.attachRouter(this, activityLandingBinding.conductor, savedInstanceState);
+		if (!router.hasRootController()) {
 			router.setRoot(RouterTransaction.with(new HomeController()));
 		}
 
@@ -43,8 +51,10 @@ public class LandingActivity extends BaseActivity {
 
 	@Override
 	public void onBackPressed() {
-		if(!router.handleBack()) {
+		if (!router.handleBack()) {
 			super.onBackPressed();
 		}
 	}
+
+
 }

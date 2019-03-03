@@ -7,8 +7,8 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {MainModule.class})
-public interface Graph extends AppComponent {
+@Component(modules = {MainModule.class,NetworkModule.class})
+public interface Graph extends AppComponent, ModuleComponent{
 
 	final class Initializer {
 		public static Graph initialize(Application application) {
