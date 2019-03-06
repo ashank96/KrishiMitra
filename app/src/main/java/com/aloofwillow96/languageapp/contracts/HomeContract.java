@@ -11,6 +11,10 @@ public interface HomeContract {
 	interface View extends MvpView{
 		void updateWeatherResponse(WeatherResponse weatherResponse);
 		void updateSoilResponse(SoilForeCastResponse soilResponse);
+		void showLoadingView();
+		void hideLoadingView();
+		void showContentView();
+		void hideContentView();
 	}
 	interface Presenter extends MvpPresenter<View>{
 		void loadWeatherData(Location location);

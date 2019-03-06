@@ -25,8 +25,8 @@
 
 			<ImageView
 				android:id="@+id/itemCropsGatewayImageView"
-				android:layout_width="84dp"
-				android:layout_height="84dp"
+				android:layout_width="52dp"
+				android:layout_height="52dp"
 				android:layout_marginTop="16dp"
 				tool:src="@drawable/ic_crop"
 				app:layout_constraintEnd_toEndOf="parent"

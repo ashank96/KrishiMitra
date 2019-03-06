@@ -28,6 +28,8 @@ public class HomePresenter implements HomeContract.Presenter {
 
 	@Override
 	public void loadWeatherData(Location location) {
+		view.hideContentView();
+		view.showLoadingView();
 		apiInterface.getWeatherForeCast(location.getLatitude(),location.getLongitude(),1,Constants.API_KEY)
 				.subscribeOn(Schedulers.io())
 				.observeOn(AndroidSchedulers.mainThread())
@@ -36,6 +38,7 @@ public class HomePresenter implements HomeContract.Presenter {
 
 	@Override
 	public void loadSoilData(Location location) {
+		view.showLoadingView();
 		apiInterface.getSoilForeCast(location.getLatitude(),location.getLongitude(),Constants.API_KEY)
 				.subscribeOn(Schedulers.io())
 				.observeOn(AndroidSchedulers.mainThread())

@@ -3,6 +3,7 @@ package com.aloofwillow96.languageapp.controllers;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -67,7 +68,21 @@ public class HomeController extends MvpController<HomeContract.View,HomePresente
 		GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
 		conductorHomeBinding.recyclerView.setLayoutManager(gridLayoutManager);
 		conductorHomeBinding.recyclerView.setAdapter(homeAdapter);
+		conductorHomeBinding.recyclerView.setNestedScrollingEnabled(false);
+		setRefreshListener();
 		homeAdapter.updateList(getItemList());
+	}
+
+	private void setRefreshListener() {
+		conductorHomeBinding.refreshButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(currentLocation!=null) {
+					getPresenter().loadWeatherData(currentLocation);
+					getPresenter().loadSoilData(currentLocation);
+				}
+			}
+		});
 	}
 
 	private void requestLocationService() {
@@ -81,8 +96,8 @@ public class HomeController extends MvpController<HomeContract.View,HomePresente
 
 	@SuppressLint("MissingPermission")
 	private void requestForLocationUpdates() {
-		((BaseActivity) getActivity()).getLocationManager().requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 1, this);
-		((BaseActivity) getActivity()).getLocationManager().requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 1, this);
+		((BaseActivity) getActivity()).getLocationManager().requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, this);
+		((BaseActivity) getActivity()).getLocationManager().requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 10, this);
 	}
 
 	@SuppressLint("MissingPermission")
@@ -102,8 +117,10 @@ public class HomeController extends MvpController<HomeContract.View,HomePresente
 	@Override
 	public void onLocationChanged(Location location) {
 		currentLocation=location;
-		getPresenter().loadWeatherData(currentLocation);
-		getPresenter().loadSoilData(currentLocation);
+
+			getPresenter().loadWeatherData(currentLocation);
+			getPresenter().loadSoilData(currentLocation);
+
 		Log.i("Location", location.getLatitude() + " " + location.getLongitude());
 	}
 
@@ -154,12 +171,55 @@ public class HomeController extends MvpController<HomeContract.View,HomePresente
 
 	@Override
 	public void updateWeatherResponse(WeatherResponse weatherResponse) {
+		hideLoadingView();
+		showContentView();
 		Log.i("Weather Data",weatherResponse.getCityName());
-		ViewUtils.makeToastShort(getActivity(),weatherResponse.getCityName());
+		conductorHomeBinding.maxTempTV.setText(String.format(ViewUtils.getString(R.string.maxTemp),
+				weatherResponse.getData().get(0).getMaxTemp()));
+		conductorHomeBinding.minTempTV.setText(String.format(ViewUtils.getString(R.string.minTemp),
+				weatherResponse.getData().get(0).getMinTemp()));
+		conductorHomeBinding.weatherDescription.setText(
+				weatherResponse.getData().get(0).getWeather().getDescription());
+		conductorHomeBinding.placeTV.setText(String.format(ViewUtils.getString(R.string.city_state_country),
+				weatherResponse.getCityName(),weatherResponse.getStateCode(),weatherResponse.getCountryCode()));
+		String name = weatherResponse.getData().get(0).getWeather().getIcon();
+		int id = getActivity().getResources().getIdentifier(name, "drawable", getActivity().getPackageName());
+		Drawable drawable = getResources().getDrawable(id);
+		conductorHomeBinding.weatherImage.setBackgroundDrawable(drawable);
+
+
 	}
 
 	@Override
 	public void updateSoilResponse(SoilForeCastResponse soilResponse) {
 		Log.i("Soil Data",soilResponse.getData().get(0).getValidDate());
+		hideLoadingView();
+		showContentView();
+		conductorHomeBinding.soilDensityTV.setText(String.format(ViewUtils.getString(R.string.soil_density),
+				soilResponse.getData().get(0).getBulkSoilDensity()));
+		conductorHomeBinding.soilAvgTempTV.setText(String.format(ViewUtils.getString(R.string.soilTemp),
+				soilResponse.getData().get(0).getSoilt40100cm()));
+		conductorHomeBinding.humidity.setText(String.format(ViewUtils.getString(R.string.humidity),
+				soilResponse.getData().get(0).getSpecificHumidity()));
+	}
+
+	@Override
+	public void showLoadingView() {
+		conductorHomeBinding.loadingView.setVisibility(View.VISIBLE);
+	}
+
+	@Override
+	public void hideLoadingView() {
+		conductorHomeBinding.loadingView.setVisibility(View.INVISIBLE);
+	}
+
+	@Override
+	public void showContentView() {
+		conductorHomeBinding.weatherSoilCardView.setVisibility(View.VISIBLE);
+	}
+
+	@Override
+	public void hideContentView() {
+		conductorHomeBinding.weatherSoilCardView.setVisibility(View.INVISIBLE);
 	}
 }

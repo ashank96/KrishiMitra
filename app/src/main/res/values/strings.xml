@@ -126,4 +126,10 @@
 	<string name="become_a_member">BECOME A MEMBER</string>
 	<string name="join_us">Join Us</string>
 	<string name="find_loads_of_resources">Find loads of resources</string>
+	<string name="maxTemp">Max : %1$.1f\u00B0C</string>
+	<string name="city_state_country">%1$s, %2$s | %3$s</string>
+	<string name="minTemp">Min : %1$.1f\u00B0C</string>
+	<string name="soil_density">Soil Density : %1$.1f kg/m3</string>
+	<string name="soilTemp">Soil Temp : %1$.1f°C</string>
+	<string name="humidity">Sp Humidity : %1$.4f kg/kg</string>
 </resources>
