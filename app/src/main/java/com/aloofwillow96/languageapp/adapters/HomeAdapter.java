@@ -1,13 +1,14 @@
 package com.aloofwillow96.languageapp.adapters;
 
 import android.view.LayoutInflater;
-
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.aloofwillow96.languageapp.BindingAdapters;
+import com.aloofwillow96.languageapp.OnGridItemClickListener;
 import com.aloofwillow96.languageapp.R;
 import com.aloofwillow96.languageapp.databinding.ItemCropsGatewayBinding;
-import com.aloofwillow96.languageapp.models.CropModel;
+import com.aloofwillow96.languageapp.models.GridModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
-	List<CropModel> cropModelList;
+	List<GridModel> cropModelList;
 	ItemCropsGatewayBinding cropsGatewayBinding;
+	OnGridItemClickListener onGridItemClickListener;
 
-	public HomeAdapter() {
+	public HomeAdapter(OnGridItemClickListener onGridItemClickListener) {
 		this.cropModelList = new ArrayList<>();
+		this.onGridItemClickListener = onGridItemClickListener;
 	}
 
 	@NonNull
@@ -35,8 +38,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
 	@Override
 	public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
-		CropModel cropModel = cropModelList.get(position);
-		holder.bind(cropModel);
+		GridModel cropModel = cropModelList.get(position);
+		holder.bind(cropModel, position, onGridItemClickListener);
 	}
 
 	@Override
@@ -44,7 +47,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 		return cropModelList.size();
 	}
 
-	public void updateList(List<CropModel> cropModels) {
+	public void updateList(List<GridModel> cropModels) {
 		this.cropModelList.addAll(cropModels);
 		notifyDataSetChanged();
 	}
@@ -59,11 +62,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
 		}
 
-		public void bind(CropModel cropModel) {
+		public void bind(final GridModel cropModel, final int pos, final OnGridItemClickListener listener) {
+
 			cropsGatewayBinding.setCropModel(cropModel);
 			BindingAdapters.setImageDrawable(cropsGatewayBinding.itemCropsGatewayImageView, cropModel.getDrawableId());
+			cropsGatewayBinding.getRoot().setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					listener.onClick(cropModel, pos);
+				}
+			});
 		}
-
 
 	}
 }

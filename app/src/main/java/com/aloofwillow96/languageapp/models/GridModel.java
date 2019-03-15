@@ -1,6 +1,6 @@
 package com.aloofwillow96.languageapp.models;
 
-public class CropModel {
+public class GridModel {
 	int drawableId;
 	String title;
 	String info;
@@ -9,7 +9,7 @@ public class CropModel {
 		return drawableId;
 	}
 
-	public CropModel(int drawableId, String title, String info) {
+	public GridModel(int drawableId, String title, String info) {
 		this.drawableId = drawableId;
 		this.title = title;
 		this.info = info;

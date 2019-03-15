@@ -2,6 +2,7 @@ package com.aloofwillow96.languageapp.controllers;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -15,13 +16,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.aloofwillow96.languageapp.KrishiSahayakApplication;
+import com.aloofwillow96.languageapp.OnGridItemClickListener;
 import com.aloofwillow96.languageapp.R;
 import com.aloofwillow96.languageapp.ViewUtils;
+import com.aloofwillow96.languageapp.activities.AboutUs;
 import com.aloofwillow96.languageapp.activities.BaseActivity;
+import com.aloofwillow96.languageapp.activities.CropsGateway;
+import com.aloofwillow96.languageapp.activities.FAQ;
+import com.aloofwillow96.languageapp.activities.ImportantLinks;
+import com.aloofwillow96.languageapp.activities.Insurance;
+import com.aloofwillow96.languageapp.activities.PestControl;
+import com.aloofwillow96.languageapp.activities.SoilHealth;
 import com.aloofwillow96.languageapp.adapters.HomeAdapter;
 import com.aloofwillow96.languageapp.contracts.HomeContract;
 import com.aloofwillow96.languageapp.databinding.ConductorHomeBinding;
-import com.aloofwillow96.languageapp.models.CropModel;
+import com.aloofwillow96.languageapp.models.GridModel;
 import com.aloofwillow96.languageapp.models.SoilForeCastResponse;
 import com.aloofwillow96.languageapp.models.WeatherResponse;
 import com.aloofwillow96.languageapp.presenters.HomePresenter;
@@ -64,7 +73,34 @@ public class HomeController extends MvpController<HomeContract.View,HomePresente
 	}
 
 	private void init() {
-		homeAdapter = new HomeAdapter();
+		homeAdapter = new HomeAdapter(new OnGridItemClickListener() {
+			@Override
+			public void onClick(GridModel gridModel, int position) {
+				switch (position) {
+					case 1:
+						getActivity().startActivity(new Intent(getApplicationContext(), CropsGateway.class));
+						break;
+					case 2:
+						getActivity().startActivity(new Intent(getApplicationContext(), SoilHealth.class));
+						break;
+					case 3:
+						getActivity().startActivity(new Intent(getApplicationContext(), PestControl.class));
+						break;
+					case 4:
+						getActivity().startActivity(new Intent(getApplicationContext(), Insurance.class));
+						break;
+					case 5:
+						getActivity().startActivity(new Intent(getApplicationContext(), ImportantLinks.class));
+						break;
+					case 6:
+						getActivity().startActivity(new Intent(getApplicationContext(), FAQ.class));
+						break;
+					case 7:
+						getActivity().startActivity(new Intent(getApplicationContext(), AboutUs.class));
+						break;
+				}
+			}
+		});
 		GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
 		conductorHomeBinding.recyclerView.setLayoutManager(gridLayoutManager);
 		conductorHomeBinding.recyclerView.setAdapter(homeAdapter);
@@ -141,25 +177,23 @@ public class HomeController extends MvpController<HomeContract.View,HomePresente
 
 	private boolean permissionsGranted() {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-			if (getActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-					getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-				return false;
-			}
+			return getActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+					getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
 		}
 		return true;
 	}
 
 
-	private List<CropModel> getItemList() {
-		List<CropModel> cropModelList = new ArrayList<>();
-		cropModelList.add(new CropModel(R.drawable.ic_farmer, ViewUtils.getString(R.string.become_a_member), ViewUtils.getString(R.string.join_us)));
-		cropModelList.add(new CropModel(R.drawable.ic_crop, ViewUtils.getString(R.string.crop_info), ViewUtils.getString(R.string.check_the_info_about_crops)));
-		cropModelList.add(new CropModel(R.drawable.ic_soil, ViewUtils.getString(R.string.soil_info), ViewUtils.getString(R.string.check_soil_health_info_here)));
-		cropModelList.add(new CropModel(R.drawable.ic_insecticide, ViewUtils.getString(R.string.pest_control), ViewUtils.getString(R.string.natural_insecticides_and_pestisides)));
-		cropModelList.add(new CropModel(R.drawable.ic_insurance, ViewUtils.getString(R.string.insurance), ViewUtils.getString(R.string.crop_security)));
-		cropModelList.add(new CropModel(R.drawable.ic_globe, ViewUtils.getString(R.string.important_links), ViewUtils.getString(R.string.find_loads_of_resources)));
-		cropModelList.add(new CropModel(R.drawable.ic_question, ViewUtils.getString(R.string.faq), ViewUtils.getString(R.string.ask_us)));
-		cropModelList.add(new CropModel(R.drawable.ic_about_us, ViewUtils.getString(R.string.about_us), ViewUtils.getString(R.string.ask_any_queries)));
+	private List<GridModel> getItemList() {
+		List<GridModel> cropModelList = new ArrayList<>();
+		cropModelList.add(new GridModel(R.drawable.ic_farmer, ViewUtils.getString(R.string.become_a_member), ViewUtils.getString(R.string.join_us)));
+		cropModelList.add(new GridModel(R.drawable.ic_crop, ViewUtils.getString(R.string.crop_info), ViewUtils.getString(R.string.check_the_info_about_crops)));
+		cropModelList.add(new GridModel(R.drawable.ic_soil, ViewUtils.getString(R.string.soil_info), ViewUtils.getString(R.string.check_soil_health_info_here)));
+		cropModelList.add(new GridModel(R.drawable.ic_insecticide, ViewUtils.getString(R.string.pest_control), ViewUtils.getString(R.string.natural_insecticides_and_pestisides)));
+		cropModelList.add(new GridModel(R.drawable.ic_insurance, ViewUtils.getString(R.string.insurance), ViewUtils.getString(R.string.crop_security)));
+		cropModelList.add(new GridModel(R.drawable.ic_globe, ViewUtils.getString(R.string.important_links), ViewUtils.getString(R.string.find_loads_of_resources)));
+		cropModelList.add(new GridModel(R.drawable.ic_question, ViewUtils.getString(R.string.faq), ViewUtils.getString(R.string.ask_us)));
+		cropModelList.add(new GridModel(R.drawable.ic_about_us, ViewUtils.getString(R.string.about_us), ViewUtils.getString(R.string.ask_any_queries)));
 		return cropModelList;
 	}
 

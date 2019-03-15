@@ -1,15 +1,7 @@
 package com.aloofwillow96.languageapp.activities;
 
-import androidx.annotation.RequiresApi;
-import androidx.databinding.DataBindingUtil;
-
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.aloofwillow96.languageapp.R;
 import com.aloofwillow96.languageapp.controllers.HomeController;
@@ -17,6 +9,9 @@ import com.aloofwillow96.languageapp.databinding.ActivityLandingBinding;
 import com.bluelinelabs.conductor.Conductor;
 import com.bluelinelabs.conductor.Router;
 import com.bluelinelabs.conductor.RouterTransaction;
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import androidx.databinding.DataBindingUtil;
 
 public class LandingActivity extends BaseActivity {
 	ActivityLandingBinding activityLandingBinding;
@@ -25,6 +20,7 @@ public class LandingActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.i("token", FirebaseInstanceId.getInstance().getToken());
 		activityLandingBinding = DataBindingUtil.setContentView(this, R.layout.activity_landing);
 		initToolbar();
 		router = Conductor.attachRouter(this, activityLandingBinding.conductor, savedInstanceState);

@@ -5,7 +5,7 @@
 
 		<variable
 			name="cropModel"
-			type="com.aloofwillow96.languageapp.models.CropModel" />
+			type="com.aloofwillow96.languageapp.models.GridModel" />
 	</data>
 
 	<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
