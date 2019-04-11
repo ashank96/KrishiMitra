@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<declare-styleable name="SmartEditText">
+		<attr name="editTextContent" format="string" />
+		<attr name="editTextContentColor" format="color" />
+		<attr name="editTextHint" format="string" />
+		<attr name="editTextHintColor" format="color" />
+		<attr name="editTextInputType" format="integer" />
+		<attr name="editTextMaxLength" format="integer" />
+		<attr name="editTextMaxLines" format="integer" />
+		<attr name="editTextSelection" format="integer" />
+	</declare-styleable>
+
+</resources>

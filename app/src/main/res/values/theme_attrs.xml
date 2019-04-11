@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- BottomNavigation -->
+	<attr name="BottomNavigationTabLabelTextSize" format="dimension" />
+	<attr name="BottomNavigationTabLabelColor" format="color" />
+	<attr name="BottomNavigationIconTint" format="reference" />
+
+	<attr name="PrimaryTextColor" format="color" />
+	<attr name="LightTextColor" format="color" />
+	<attr name="ActionTextColor" format="color" />
+	<attr name="ThemeTextColor" format="color" />
+	<attr name="GreenSignalColor" format="color" />
+
+	<attr name="FilledButtonBackground" format="reference" />
+	<attr name="DefaultButtonTextColor" format="color" />
+	<attr name="OutlineButtonBackground" format="reference" />
+	<attr name="VeryLightPinkButtonBackground" format="reference" />
+	<attr name="OutlineButtonBackgroundLight" format="reference" />
+
+	<!-- ToolBar -->
+	<attr name="ToolBarTextColor" format="color" />
+	<attr name="ToolBarTextSize" format="dimension" />
+
+	<!-- Common -->
+	<attr name="DividerColor" format="color" />
+
+	<!-- SearchView -->
+	<attr name="SearchViewSearchIconColor" format="color"/>
+	<attr name="SearchViewClearTextIconColor" format="color"/>
+	<attr name="SearchViewBackgroundDrawable" format="reference"/>
+
+	<attr name="ErrorIconColor" format="color"/>
+
+</resources>

@@ -19,7 +19,6 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/toolbarHolder"
 		app:layout_constraintBottom_toBottomOf="parent">
-
 	</com.bluelinelabs.conductor.ChangeHandlerFrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

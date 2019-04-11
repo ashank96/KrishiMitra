@@ -1,9 +1,11 @@
 package com.aloofwillow96.languageapp;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 
 import android.os.Build;
@@ -11,7 +13,11 @@ import android.util.Log;
 
 
 import com.aloofwillow96.languageapp.activities.LandingActivity;
+import com.aloofwillow96.languageapp.models.UpdateTokenRequest;
 import com.aloofwillow96.languageapp.models.notification.Data_;
+import com.aloofwillow96.languageapp.network.APIInterface;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
@@ -23,6 +29,9 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import androidx.core.app.NotificationCompat;
 
 /**
@@ -33,10 +42,20 @@ public class KrishiFirebaseMessagingService extends FirebaseMessagingService {
 
 	public final String TAG = getClass().getSimpleName();
 
+
 	@Override
 	public void onNewToken(String s) {
 		super.onNewToken(s);
+		KrishiPreferences.getInstance().set(Constants.FCM_TOKEN, s);
 		Log.i(TAG, "Refreshed Token " + s);
+		//sendTokenToServer();
+	}
+
+	private void sendTokenToServer() {
+		if(FirebaseAuth.getInstance().getCurrentUser()!=null && FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()!=null) {
+			//apiInterface.updateFcmToken(new UpdateTokenRequest(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), KrishiPreferences.getInstance().getString(Constants.FCM_TOKEN,"")));
+
+		}
 	}
 
 	@Override
@@ -64,9 +83,9 @@ public class KrishiFirebaseMessagingService extends FirebaseMessagingService {
 			e.printStackTrace();
 		}
 		if (json != null) {
-			JSONObject jsonObject=(JSONObject) json.get("data");
+			JSONObject jsonObject = (JSONObject) json.get("data");
 			Gson gson = new Gson();
-			Data_ notificationMessage=gson.fromJson(jsonObject.toString(),Data_.class);
+			Data_ notificationMessage = gson.fromJson(jsonObject.toString(), Data_.class);
 			Intent intent = new Intent(this, LandingActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
@@ -77,7 +96,11 @@ public class KrishiFirebaseMessagingService extends FirebaseMessagingService {
 					.setAutoCancel(true)
 					.setSmallIcon(R.drawable.ic_sprout)
 					.setColor(getResources().getColor(R.color.blue))
-					.setLargeIcon(((BitmapDrawable)getResources().getDrawable(R.drawable.nuts)).getBitmap())
+					.setLargeIcon(((BitmapDrawable) getResources().getDrawable(R.drawable.nuts)).getBitmap())
+					.setDefaults(Notification.DEFAULT_ALL)
+					.setPriority(NotificationManager.IMPORTANCE_HIGH)
+					.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
+					.setLights(Color.RED, 3000, 3000)
 					.setContentIntent(pendingIntent);
 			;
 			NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

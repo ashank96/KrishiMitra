@@ -7,7 +7,6 @@
 		android:layout_height="wrap_content">
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
-		android:background="@color/pink_light"
 		android:layout_height="wrap_content">
 		<ProgressBar
 			android:layout_width="wrap_content"
@@ -29,23 +28,24 @@
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
-				<androidx.appcompat.widget.AppCompatImageButton
+
+				<ImageButton
+					android:id="@+id/refreshButton"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:id="@+id/refreshButton"
 					android:background="@drawable/ic_loader_icon"
-					app:layout_constraintTop_toTopOf="@id/placeTV"
-					app:layout_constraintBottom_toBottomOf="@id/placeTV"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintStart_toEndOf="@id/placeTV"
+					android:src="@drawable/ic_loader_icon"
+					android:layout_marginTop="@dimen/spacing_small"
 					android:layout_marginLeft="@dimen/spacing_normal"
-					android:layout_marginTop="@dimen/spacing_normal" />
+					app:layout_constraintStart_toStartOf="@id/weatherImage"
+					app:layout_constraintTop_toTopOf="parent" />
 				<androidx.appcompat.widget.AppCompatImageView
 					android:id="@+id/weatherImage"
-					android:layout_width="80dp"
-					android:layout_height="80dp"
-					android:layout_marginTop="@dimen/spacing_normal"
+					android:layout_width="70dp"
+					android:layout_height="70dp"
+					android:layout_marginTop="@dimen/spacing_large"
 					tool:src="@drawable/a01n"
+					android:layout_marginLeft="@dimen/spacing_small"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,16 +56,18 @@
 					android:fontFamily="@font/noto_sans_bold"
 					android:textColor="@color/grey_dark"
 					tool:text="Cloudy"
+					android:paddingLeft="@dimen/spacing_small"
 					android:gravity="center"
+					android:paddingBottom="@dimen/spacing_small"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintEnd_toEndOf="@id/weatherImage"
+					android:layout_marginLeft="@dimen/spacing_normal"
 					app:layout_constraintTop_toBottomOf="@id/weatherImage" />
 
 				<TextView
 					android:id="@+id/maxTempTV"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="@dimen/spacing_normal"
+					android:layout_marginTop="@dimen/spacing_large"
 					android:textColor="@color/red_inline_error"
 					android:textSize="@dimen/text_size_extra_large"
 					android:fontFamily="@font/noto_sans_bold"
@@ -98,7 +100,7 @@
 					tool:text="Bangalore, KN | In" />
 
 				<TextView
-					android:id="@+id/soilDensityTV"
+					android:id="@+id/windSpeedTV"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="@dimen/spacing_normal"
@@ -108,10 +110,10 @@
 					android:fontFamily="@font/noto_sans_bold"
 					app:layout_constraintStart_toEndOf="@id/maxTempTV"
 					app:layout_constraintTop_toBottomOf="@id/placeTV"
-					tool:text="@string/soil_density" />
+					tool:text="@string/wind_speed" />
 
 				<TextView
-					android:id="@+id/soilAvgTempTV"
+					android:id="@+id/pressure"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:fontFamily="@font/noto_sans_bold"
@@ -120,8 +122,8 @@
 					android:textColor="@color/redBright"
 					android:layout_marginTop="@dimen/spacing_small"
 					app:layout_constraintStart_toEndOf="@id/maxTempTV"
-					app:layout_constraintTop_toBottomOf="@id/soilDensityTV"
-					tool:text="@string/soilTemp" />
+					app:layout_constraintTop_toBottomOf="@id/windSpeedTV"
+					tool:text="@string/pressure" />
 
 				<TextView
 					android:id="@+id/humidity"

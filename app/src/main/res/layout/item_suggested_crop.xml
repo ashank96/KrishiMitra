@@ -4,16 +4,15 @@
 	<data>
 
 		<variable
-			name="cropModel"
-			type="com.aloofwillow96.languageapp.models.GridModel" />
+			name="crop"
+			type="com.aloofwillow96.languageapp.models.CropDetailResponse.Data" />
 	</data>
 
 	<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent"
 		android:layout_margin="@dimen/spacing_small"
-		tool:elevation="3dp"
+		tool:elevation="5dp"
 		app:cardBackgroundColor="@color/white"
-		app:cardUseCompatPadding="true"
 		app:cardCornerRadius="6dp"
 		android:layout_height="wrap_content">
 
@@ -25,10 +24,11 @@
 
 			<ImageView
 				android:id="@+id/itemCropsGatewayImageView"
-				android:layout_width="52dp"
-				android:layout_height="52dp"
+				android:layout_width="100dp"
+				android:layout_height="100dp"
 				android:layout_marginTop="16dp"
 				tool:src="@drawable/ic_crop"
+				android:src="@{crop.cropImage}"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
 				android:id="@+id/itemCropsGatewayTitleTV"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="@{cropModel.title}"
+				android:text="@{crop.crops}"
 				tool:text="Crop"
 				android:fontFamily="@font/noto_sans_bold"
 				app:layout_constraintEnd_toEndOf="parent"
@@ -55,18 +55,32 @@
 				app:layout_constraintTop_toBottomOf="@id/itemCropsGatewayTitleTV" />
 
 			<TextView
-				android:id="@+id/itemCropsGatewayHintTV"
+				android:id="@+id/itemMaxPrice"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:gravity="center"
 				android:padding="5dp"
 				tool:text="Some info"
 				android:fontFamily="@font/noto_sans"
-				android:text="@{cropModel.info}"
-				android:textColor="@android:color/darker_gray"
+				android:text="@{crop.maxPriceString}"
+				style="@style/Text.FB.Body1"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/itemCropsGatewayViewLine" />
+
+			<TextView
+				android:id="@+id/itemMinPrice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:padding="5dp"
+				tool:text="Some info"
+				android:fontFamily="@font/noto_sans"
+				android:text="@{crop.minPriceString}"
+				style="@style/Text.FB.Body1"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/itemCropsGatewayViewLine" />
+				app:layout_constraintTop_toBottomOf="@id/itemMaxPrice" />
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 

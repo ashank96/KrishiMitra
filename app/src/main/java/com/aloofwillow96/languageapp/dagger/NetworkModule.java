@@ -2,7 +2,10 @@ package com.aloofwillow96.languageapp.dagger;
 
 import com.aloofwillow96.languageapp.network.APIInterface;
 import com.aloofwillow96.languageapp.network.ApiUrls;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -16,12 +19,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetworkModule {
 
+	@Named("server")
 	@Provides
 	@Singleton
-	APIInterface providesApiInterface(Retrofit retroFit) {
+	APIInterface providesServerApiInterface(@Named("serverRetrofit")Retrofit retroFit) {
+		return retroFit.create(APIInterface.class);
+	}
+	@Named("external")
+	@Provides
+	@Singleton
+	APIInterface providesExternalApiInterface(@Named("externalRetrofit")Retrofit retroFit) {
 		return retroFit.create(APIInterface.class);
 	}
 
+	@Named("externalRetrofit")
 	@Provides
 	@Singleton
 	Retrofit providesRetrofit(OkHttpClient okHttpClient) {
@@ -32,6 +43,19 @@ public class NetworkModule {
 				.client(okHttpClient)
 				.build();
 	}
+
+	@Named("serverRetrofit")
+	@Provides
+	@Singleton
+	Retrofit providesServerRetrofit(OkHttpClient okHttpClient, Gson gson) {
+		return new Retrofit.Builder()
+				.baseUrl(ApiUrls.SERVER_URL)
+				.addConverterFactory(GsonConverterFactory.create(gson))
+				.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+				.client(okHttpClient)
+				.build();
+	}
+
 
 	@Provides
 	@Singleton
@@ -47,5 +71,13 @@ public class NetworkModule {
 		HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
 		httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 		return httpLoggingInterceptor;
+	}
+
+	@Provides
+	@Singleton
+	Gson providesGson(){
+		return new GsonBuilder()
+				.setLenient()
+				.create();
 	}
 }

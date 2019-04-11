@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:paddingBottom="42dp"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/title"
+			style="@style/Text.FB.Heading2.Theme"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_normal"
+			android:layout_marginStart="@dimen/spacing_normal"
+			android:maxLines="1"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			android:text="What crops do you grow?" />
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recycler_view"
+			android:layout_marginLeft="@dimen/spacing_normal"
+			android:layout_marginRight="@dimen/spacing_normal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/title" />
+
+		<ProgressBar
+			android:layout_width="wrap_content"
+			android:id="@+id/loadingView"
+			android:visibility="gone"
+			android:layout_height="wrap_content"
+			android:paddingBottom="@dimen/spacing_large"
+			android:layout_marginTop="@dimen/spacing_extra_large"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			/>
+		<View
+			android:id="@+id/divider"
+			android:layout_width="0dp"
+			android:layout_height="@dimen/divider_thin"
+			android:layout_marginTop="@dimen/spacing_normal"
+			android:background="?attr/DividerColor"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/recycler_view" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+	<androidx.appcompat.widget.AppCompatButton
+		android:id="@+id/proceedButton"
+		style="@style/Button.FB.Filled"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/spacing_normal"
+		android:layout_marginRight="@dimen/spacing_normal"
+		android:layout_marginBottom="@dimen/spacing_large"
+		android:enabled="false"
+		android:text="Submit"
+		android:layout_gravity="bottom"
+		/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

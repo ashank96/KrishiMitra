@@ -129,7 +129,32 @@
 	<string name="maxTemp">Max : %1$.1f\u00B0C</string>
 	<string name="city_state_country">%1$s, %2$s | %3$s</string>
 	<string name="minTemp">Min : %1$.1f\u00B0C</string>
-	<string name="soil_density">Soil Density : %1$.1f kg/m3</string>
-	<string name="soilTemp">Soil Temp : %1$.1f°C</string>
-	<string name="humidity">Sp Humidity : %1$.4f kg/kg</string>
+	<string name="wind_speed">Wind Speed : %1$.1f m/s</string>
+	<string name="pressure">Pressure : %1$.1f kg/m-cu</string>
+	<string name="humidity">Humidity : %1$.4f kg/kg</string>
+	<string name="regex_url">/\</string>
+	<string name="become_a_member_descp">Register your first crop</string>
+	<string-array name="land">
+		<item>0.1 acres</item>
+		<item>0.2 acres</item>
+		<item>0.3 acres</item>
+		<item>0.5 acres</item>
+		<item>0.7 acres</item>
+		<item>1.0 acre</item>
+	</string-array>
+	<string-array name="land_suggestions">
+		<item>0.1 acres</item>
+		<item>0.2 acres</item>
+		<item>0.3 acres</item>
+		<item>0.4 acres</item>
+		<item>0.5 acres</item>
+		<item>0.6 acre</item>
+		<item>0.7 acres</item>
+		<item>0.8 acres</item>
+		<item>0.9 acres</item>
+		<item>1.0 acres</item>
+		<item>1.5 acres</item>
+		<item>2.0 acres</item>
+		<item>2.5 acres</item>
+	</string-array>
 </resources>
