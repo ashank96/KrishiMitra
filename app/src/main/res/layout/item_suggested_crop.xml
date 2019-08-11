@@ -1,0 +1,89 @@
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tool="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="crop"
+			type="com.aloofwillow96.languageapp.models.CropDetailResponse.Data" />
+	</data>
+
+	<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_margin="@dimen/spacing_small"
+		tool:elevation="5dp"
+		app:cardBackgroundColor="@color/white"
+		app:cardCornerRadius="6dp"
+		android:layout_height="wrap_content">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/itemCropsGatewayLayout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/spacing_small">
+
+			<ImageView
+				android:id="@+id/itemCropsGatewayImageView"
+				android:layout_width="100dp"
+				android:layout_height="100dp"
+				android:layout_marginTop="16dp"
+				tool:src="@drawable/ic_crop"
+				android:src="@{crop.cropImage}"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<TextView
+				android:id="@+id/itemCropsGatewayTitleTV"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@{crop.crops}"
+				tool:text="Crop"
+				android:fontFamily="@font/noto_sans_bold"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/itemCropsGatewayImageView" />
+
+			<View
+				android:id="@+id/itemCropsGatewayViewLine"
+				android:layout_width="0dp"
+				android:layout_height="1dp"
+				android:layout_margin="10dp"
+				android:background="@color/grey_light"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/itemCropsGatewayTitleTV" />
+
+			<TextView
+				android:id="@+id/itemMaxPrice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:padding="5dp"
+				tool:text="Some info"
+				android:fontFamily="@font/noto_sans"
+				android:text="@{crop.maxPriceString}"
+				style="@style/Text.FB.Body1"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/itemCropsGatewayViewLine" />
+
+			<TextView
+				android:id="@+id/itemMinPrice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:padding="5dp"
+				tool:text="Some info"
+				android:fontFamily="@font/noto_sans"
+				android:text="@{crop.minPriceString}"
+				style="@style/Text.FB.Body1"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/itemMaxPrice" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+	</androidx.cardview.widget.CardView>
+</layout>

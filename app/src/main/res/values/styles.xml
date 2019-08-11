@@ -1,11 +1,171 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/pink_light</item>
+        <item name="colorPrimaryDark">@color/blue</item>
+        <item name="colorAccent">@color/grey_dark</item>
+        <item name="DividerColor">@color/grey_very_light</item>
+        <item name="PrimaryTextColor">@color/grey_very_dark</item>
+        <item name="GreenSignalColor">@color/green_light</item>
+        <item name="LightTextColor">@color/grey_light</item>
+        <item name="ActionTextColor">@color/blue_dark_sky</item>
+        <item name="ThemeTextColor">@color/blue</item>
+
+        <item name="DefaultButtonTextColor">@color/white</item>
+        <item name="FilledButtonBackground">@drawable/button_filled_selector_blue</item>
+        <item name="OutlineButtonBackground">@drawable/button_outline_selector_blue</item>
+        <item name="OutlineButtonBackgroundLight">@drawable/button_outline_selector_white</item>
+        <item name="VeryLightPinkButtonBackground">@drawable/button_filled_selector_pink_very_light
+        </item>
     </style>
 
+
+    <style name="Text.FB.Heading1" parent="Base.TextAppearance.AppCompat.Headline">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+        <item name="android:textColor">?attr/PrimaryTextColor</item>
+        <item name="android:textSize">@dimen/text_size_extra_large</item>
+    </style>
+
+    <style name="Text.FB.Heading1.Theme">
+        <item name="android:textColor">?attr/ThemeTextColor</item>
+    </style>
+
+    <style name="Text.FB.Heading2" parent="Base.TextAppearance.AppCompat.Headline">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+        <item name="android:textColor">?attr/PrimaryTextColor</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="Text.FB.Heading2.Theme">
+        <item name="android:textColor">?attr/ThemeTextColor</item>
+    </style>
+
+    <style name="Text.FB.Heading3" parent="Base.TextAppearance.AppCompat.Headline">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+        <item name="android:textColor">?attr/PrimaryTextColor</item>
+        <item name="android:textSize">@dimen/text_size_semi_large</item>
+    </style>
+
+    <style name="Text.FB.Heading3.Theme">
+        <item name="android:textColor">?attr/ThemeTextColor</item>
+    </style>
+
+    <!-- region end -->
+
+    <!-- region body text -->
+
+    <style name="Text.FB.Body1" parent="Base.TextAppearance.AppCompat.Body1">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+        <item name="android:textColor">?attr/PrimaryTextColor</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+
+    <style name="Text.FB.Body1.Theme">
+        <item name="android:textColor">?attr/ThemeTextColor</item>
+    </style>
+
+    <style name="Text.FB.Body1.Light">
+        <item name="android:textColor">?attr/LightTextColor</item>
+    </style>
+
+    <style name="Text.FB.Body2" parent="Base.TextAppearance.AppCompat.Body2">
+        <item name="android:fontFamily">@font/noto_sans</item>
+        <item name="android:textColor">?attr/PrimaryTextColor</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+
+    <style name="Text.FB.Body2.Theme">
+        <item name="android:textColor">?attr/ThemeTextColor</item>
+    </style>
+
+    <style name="Text.FB.Body2.Light">
+        <item name="android:textColor">?attr/LightTextColor</item>
+    </style>
+
+    <style name="Text.FB.Body2.Light.Bold">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+    </style>
+
+    <style name="Text.FB.Body2.Green" parent="Base.TextAppearance.AppCompat.Body2">
+        <item name="android:textColor">?attr/GreenSignalColor</item>
+    </style>
+
+    <style name="Text.FB.Body2.Red" parent="Base.TextAppearance.AppCompat.Body2">
+        <item name="android:textColor">@color/redBright</item>
+    </style>
+
+
+    <!-- region end -->
+
+    <!-- region caption text -->
+
+    <style name="Text.FB.Caption1" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+        <item name="android:textColor">?attr/PrimaryTextColor</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="Text.FB.Caption1.Theme">
+        <item name="android:textColor">?attr/ThemeTextColor</item>
+    </style>
+
+    <style name="Text.FB.Caption1.Light">
+        <item name="android:textColor">?attr/LightTextColor</item>
+    </style>
+
+    <style name="Text.FB.Caption2" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily">@font/noto_sans</item>
+        <item name="android:textColor">?attr/PrimaryTextColor</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="Text.FB.Caption2.Theme">
+        <item name="android:textColor">?attr/ThemeTextColor</item>
+    </style>
+
+    <style name="Text.FB.Caption2.Light">
+        <item name="android:textColor">?attr/LightTextColor</item>
+    </style>
+
+    <style name="Text.FB.Caption1.Error" parent="TextAppearance.Design.Error">
+        <item name="android:textColor">@color/red_inline_error</item>
+    </style>
+
+    <style name="Text.FB.Caption2.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ErrorText" parent="Text.FB.Caption1.Error">
+        <item name="android:theme">@style/Text.FB.Caption1.Error</item>
+    </style>
+
+    <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
+        <item name="colorControlNormal">?attr/LightTextColor</item>
+        <item name="colorControlActivated">?attr/colorAccent</item>
+        <item name="colorControlHighlight">?attr/LightTextColor</item>
+    </style>
+    <style name="Button.FB" parent="Base.TextAppearance.AppCompat.Widget.Button">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:paddingStart">@dimen/spacing_normal</item>
+        <item name="android:paddingEnd">@dimen/spacing_normal</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">48dp</item>
+    </style>
+    <style name="Button.FB.Filled">
+        <item name="android:textColor">?attr/DefaultButtonTextColor</item>
+        <item name="android:background">?attr/FilledButtonBackground</item>
+    </style>
+
+    <style name="Button.FB.Outline">
+        <item name="android:textColor">?attr/ThemeTextColor</item>
+        <item name="android:background">?attr/OutlineButtonBackground</item>
+    </style>
+
+    <style name="Button.FB.Outline.Light">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">?attr/OutlineButtonBackgroundLight</item>
+    </style>
 </resources>

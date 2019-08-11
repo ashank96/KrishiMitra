@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "415853061013",
+    "firebase_url": "https://krishi-sahayak-1518417423015.firebaseio.com",
+    "project_id": "krishi-sahayak-1518417423015",
+    "storage_bucket": "krishi-sahayak-1518417423015.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415853061013:android:894402840c79ccce",
+        "android_client_info": {
+          "package_name": "com.aloofwillow96.languageapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415853061013-vciqc88iq2csju6dls9cp4r6e86k14r7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWMSpmtCUSU3DonWNscyn_Q-QCQndjawo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

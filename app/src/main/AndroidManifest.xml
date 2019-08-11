@@ -1,34 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aloofwillow96.languageapp">
+	package="com.aloofwillow96.languageapp">
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.VIBRATE" />
 
-    <application
-        android:allowBackup="true"
-        android:hardwareAccelerated="false"
-        android:icon="@drawable/appi"
-        android:label="@string/appName"
-        android:largeHeap="true"
-        android:roundIcon="@drawable/appi"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".FirstActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+	<application
+		android:name=".KrishiSahayakApplication"
+		android:allowBackup="true"
+		android:hardwareAccelerated="false"
+		android:icon="@drawable/ic_sprout"
+		android:largeHeap="true"
+		android:roundIcon="@drawable/ic_sprout"
+		android:label="@string/appName"
+		android:supportsRtl="true"
+		android:theme="@style/AppTheme">
+		<activity
+			android:name=".activities.FirstActivity"
+			android:screenOrientation="portrait">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".CropTemplate" />
-        <activity android:name=".SoilHealth" />
-        <activity android:name=".PestControl" />
-        <activity android:name=".CropsGateway" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ImportantLinks" />
-        <activity android:name=".Insurance" />
-        <activity android:name=".FAQ" />
-        <activity android:name=".AboutUs"></activity>
-    </application>
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".activities.CropTemplate"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".activities.SoilHealth"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".activities.PestControl"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".activities.CropsGateway"
+			android:screenOrientation="portrait" />
+
+		<activity
+			android:name=".activities.ImportantLinks"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".activities.Insurance"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".activities.FAQ"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".activities.AboutUs"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".activities.LandingActivity"
+			android:windowSoftInputMode="adjustResize"
+			android:screenOrientation="portrait"></activity>
+
+		<meta-data
+			android:name="preloaded_fonts"
+			android:resource="@array/preloaded_fonts" />
+		<service android:name=".KrishiFirebaseMessagingService">
+			<intent-filter>
+				<action android:name="com.google.firebase.MESSAGING_EVENT" />
+			</intent-filter>
+		</service>
+		<meta-data
+			android:name="com.google.firebase.messaging.default_notification_channel_id"
+			android:value="121" />
+	</application>
 
 </manifest>

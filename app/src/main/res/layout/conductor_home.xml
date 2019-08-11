@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tool="http://schemas.android.com/tools">
+	<androidx.core.widget.NestedScrollView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<ProgressBar
+			android:layout_width="wrap_content"
+			android:id="@+id/loadingView"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_extra_large"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			/>
+
+		<androidx.cardview.widget.CardView
+			android:id="@+id/weatherSoilCardView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<ImageButton
+					android:id="@+id/refreshButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/ic_loader_icon"
+					android:src="@drawable/ic_loader_icon"
+					android:layout_marginTop="@dimen/spacing_small"
+					android:layout_marginLeft="@dimen/spacing_normal"
+					app:layout_constraintStart_toStartOf="@id/weatherImage"
+					app:layout_constraintTop_toTopOf="parent" />
+				<androidx.appcompat.widget.AppCompatImageView
+					android:id="@+id/weatherImage"
+					android:layout_width="70dp"
+					android:layout_height="70dp"
+					android:layout_marginTop="@dimen/spacing_large"
+					tool:src="@drawable/a01n"
+					android:layout_marginLeft="@dimen/spacing_small"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/weatherDescription"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/noto_sans_bold"
+					android:textColor="@color/grey_dark"
+					tool:text="Cloudy"
+					android:paddingLeft="@dimen/spacing_small"
+					android:gravity="center"
+					android:paddingBottom="@dimen/spacing_small"
+					app:layout_constraintStart_toStartOf="parent"
+					android:layout_marginLeft="@dimen/spacing_normal"
+					app:layout_constraintTop_toBottomOf="@id/weatherImage" />
+
+				<TextView
+					android:id="@+id/maxTempTV"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/spacing_large"
+					android:textColor="@color/red_inline_error"
+					android:textSize="@dimen/text_size_extra_large"
+					android:fontFamily="@font/noto_sans_bold"
+					app:layout_constraintStart_toEndOf="@id/weatherImage"
+					app:layout_constraintTop_toTopOf="parent"
+					tool:text="Max : 22\u00B0C" />
+
+				<TextView
+					android:id="@+id/minTempTV"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/noto_sans_bold"
+					android:textColor="@color/blue_dark_sky"
+					android:layout_marginTop="@dimen/spacing_small"
+					app:layout_constraintStart_toEndOf="@id/weatherImage"
+					app:layout_constraintTop_toBottomOf="@id/maxTempTV"
+					tool:text="MIN : 11\u00B0C" />
+
+				<TextView
+					android:id="@+id/placeTV"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textColor="@color/grey_medium_light"
+					android:fontFamily="@font/noto_sans_bold"
+					android:textSize="@dimen/text_size_large"
+					android:layout_marginRight="@dimen/spacing_normal"
+					app:layout_constraintStart_toEndOf="@id/maxTempTV"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tool:text="Bangalore, KN | In" />
+
+				<TextView
+					android:id="@+id/windSpeedTV"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/spacing_normal"
+					android:layout_marginLeft="@dimen/spacing_normal"
+					android:textColor="@color/green_light"
+					android:textSize="@dimen/text_size_normal"
+					android:fontFamily="@font/noto_sans_bold"
+					app:layout_constraintStart_toEndOf="@id/maxTempTV"
+					app:layout_constraintTop_toBottomOf="@id/placeTV"
+					tool:text="@string/wind_speed" />
+
+				<TextView
+					android:id="@+id/pressure"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/noto_sans_bold"
+					android:layout_marginLeft="@dimen/spacing_normal"
+					android:textSize="@dimen/text_size_normal"
+					android:textColor="@color/redBright"
+					android:layout_marginTop="@dimen/spacing_small"
+					app:layout_constraintStart_toEndOf="@id/maxTempTV"
+					app:layout_constraintTop_toBottomOf="@id/windSpeedTV"
+					tool:text="@string/pressure" />
+
+				<TextView
+					android:id="@+id/humidity"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/text_size_normal"
+					android:textColor="@color/grey_dark"
+					android:fontFamily="@font/noto_sans_bold"
+					android:layout_marginTop="@dimen/spacing_normal"
+					android:layout_marginLeft="@dimen/spacing_normal"
+					app:layout_constraintStart_toEndOf="@id/maxTempTV"
+					app:layout_constraintTop_toBottomOf="@id/minTempTV"
+					tool:text="@string/humidity" />
+
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+		</androidx.cardview.widget.CardView>
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recyclerView"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:scrollbars="vertical"
+			app:layout_constraintTop_toBottomOf="@id/weatherSoilCardView" />
+
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.core.widget.NestedScrollView>
+</layout>

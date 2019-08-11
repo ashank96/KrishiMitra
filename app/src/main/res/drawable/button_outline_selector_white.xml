@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item android:state_pressed="true" >
+		<shape android:shape="rectangle" >
+			<corners android:radius="@dimen/corner_radius_outline_button" />
+			<solid android:color="@color/blue_dark" />
+			<stroke
+				android:color="@color/white"
+				android:width="@dimen/stroke_width_outline_button" />
+		</shape>
+	</item>
+	<item android:state_focused="true" >
+		<shape android:shape="rectangle" >
+			<corners android:radius="@dimen/corner_radius_outline_button" />
+			<solid android:color="@color/blue_dark"/>
+			<stroke
+				android:color="@color/white"
+				android:width="@dimen/stroke_width_outline_button" />
+		</shape>
+	</item>
+	<item android:state_enabled="false" >
+		<shape android:shape="rectangle" >
+			<corners android:radius="@dimen/corner_radius_outline_button" />
+			<solid android:color="@color/pink_very_light"/>
+			<stroke
+				android:color="@color/pink_very_light"
+				android:width="@dimen/stroke_width_outline_button" />
+		</shape>
+	</item>
+	<item>
+		<shape android:shape="rectangle" >
+			<corners android:radius="@dimen/corner_radius_outline_button" />
+			<solid android:color="@android:color/transparent" />
+			<stroke
+				android:color="@color/white"
+				android:width="@dimen/stroke_width_outline_button" />
+		</shape>
+	</item>
+</selector>
